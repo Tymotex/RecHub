@@ -2,12 +2,8 @@ import React from 'react';
 import Rating from './Rating'
 
 class Review extends React.Component { 
-    constructor(props) {
-        super(props);
-    }
     componentWillMount() {
         console.log("Mounting");
-        this.style = { backgroundColor: "yellow" };
     }
 
     shouldComponentUpdate(newProps) {
