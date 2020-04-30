@@ -3,7 +3,8 @@ const express = require("express"),
       axios = require("axios");
 
 const nasaRouter = require("./routes/nasa/nasa-routes"),
-      indexRouter = require("./routes/index/index-routes");
+      indexRouter = require("./routes/index/index-routes"),
+      gamesRouter = require("./routes/games/games-routes");
 
 const app = express();
 
@@ -12,7 +13,8 @@ const app = express();
 // ===== Configuration =====
 // === Routes ===
 app.use("/nasa", nasaRouter);  // For testing HTTP requests to NASA's API
-app.use("/", indexRouter)
+app.use("/", indexRouter);
+app.use("/games", gamesRouter);
 
 // === Libraries ===
 // dotenv lets us access all the keys and values we define in the .env file
