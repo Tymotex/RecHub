@@ -1,34 +1,48 @@
 const express = require("express"),
       axios = require("axios");
-const app = express();
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    console.log(process.env.IGDB_API_KEY);
+BASE_URL = "https://api-v3.igdb.com";
 
-    var options = { 
+router.get("/", (req, res) => {
+    var getCompanyData = { 
         method: "POST",
-        url: "https://api-v3.igdb.com/games",
+        url: `${BASE_URL}/companies`,
         headers: {
             "user-key": process.env.IGDB_API_KEY 
         },
-        data: {
-            id: 1
-        },
+        data: 'fields developed; where name="Atlus";',
         json: true
     }
-
-    axios(options)
+    axios(getCompanyData)
         .then((response) => {
-            console.log("Done!");
-            console.log(response.data);
-            res.send(response.data);
+            developedGames = response.data[0].developed.join(", ");
+            var getGamesBy = { 
+                method: "POST",
+                url: `${BASE_URL}/games`,
+                headers: {
+                    "user-key": process.env.IGDB_API_KEY 
+                },
+                data: `fields *; where id=(${developedGames}); limit 10; sort popularity desc;`,
+                json: true
+            };
+            axios(getGamesBy)
+                .then((nextRes) => {
+                    res.send(nextRes.data);
+                })
+                .catch((err) => {
+                    res.render("error", {
+                        err: err
+                    });
+                });
         })
         .catch((err) => {
-            console.log("Error!");
-            res.send("Games!");
+            res.render("error", {
+                err: err
+            });
         });
 });
+
 
 module.exports = router;
