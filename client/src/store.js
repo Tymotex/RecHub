@@ -1,5 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import { reviews, sort } from './reducers';
+import { addReview, rateReview, removeReview, sortReviews } from './actionCreators';
+import initialState from './initialState';
 
 /** 
  * State updates are done by sending this whole state object through a SINGLE
@@ -7,39 +9,31 @@ import { reviews, sort } from './reducers';
  * To create this single reducer, we need to compose all smaller reducers 
  * using combineReducers() to combine all reducers to a single reducer to
  * be used centrally.
+ *
+ * ===== Store methods =====
+ * getState()       -- returns the current application state
+ * dispatch(action) -- the only way to change application state
+ *                     the action is sent through reducers which handle setting the state!
+ * subscribe(func)  -- subscribing a function to a store means that that function will
+ *                     will be invoked when dispatch() finishes 
+ *                     Returns a function that can be called to unsubscribe the listener
  */
 
-const initialState = {
-    reviews: [
-        {
-            id: 1,
-            gameTitle: "Persona 5",
-            reviewContent: "Persona 5 Royal is fucking amazing.",
-            imgURL: "https://i.ytimg.com/vi/Rv0cx0vNSWg/maxresdefault.jpg",
-            rating: 5,
-            colour: "#9770ed"
-        },
-        {
-            id: 2,  
-            gameTitle: "Skyrim",
-            reviewContent: "Skyrim is also amazing.",
-            imgURL: "https://img-eshop.cdn.nintendo.net/i/3a41386d4b0999365727a21cc5c13853cfc244abca39b689bb79a339601e48c3.jpg?w=1000",
-            rating: 4,
-            colour: "#9770ed"
-        }
-    ],
-    sort: "SORT_BY_DATE"
-}
-
+ 
 const store = createStore(
     combineReducers({ reviews, sort }),
-    initialState    // Optionally supply an initial state
+    initialState
 );
 
-/**
- * ===== Store methods =====
- * getState() -- returns the current application state
- * dispatch() -- 
- */
-
+const newReviewAction = addReview(
+    "Divinity Original Sin II", 
+    "https://assets1.ignimgs.com/2019/01/16/divinity-original-sin-2---button-fin-1547678837529.jpg",
+    3,
+    "#555555"
+);
+const newReviewID = newReviewAction.id;
+store.dispatch(newReviewAction);
+store.dispatch(rateReview(newReviewID, 5));
+store.dispatch(removeReview(newReviewID));
+store.dispatch(sortReviews("title"));
 console.log(store.getState());

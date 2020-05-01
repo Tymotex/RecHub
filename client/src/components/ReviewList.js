@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { render } from 'react-dom';
 
 class ReviewList extends React.Component { 
     

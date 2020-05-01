@@ -2,10 +2,6 @@ import React from 'react';
 import Rating from './Rating'
 
 class Review extends React.Component { 
-    componentWillMount() {
-        console.log("Mounting");
-    }
-
     shouldComponentUpdate(newProps) {
         return newProps.rating !== this.props.rating;
     }

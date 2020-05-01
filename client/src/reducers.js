@@ -35,11 +35,11 @@ export const reviews = (state=[], action) => {
             ];
         case C.RATE_REVIEW:
             // Delegate the rerating of a review to the 'review' reducer
-            return state.map((review) => {
-                 return review({}, action);
+            return state.map((eachReview) => {
+                 return review(eachReview, action);
             })
         case C.REMOVE_REVIEW:
-            return state.filter((review) => review.id !== action.id);
+            return state.filter((eachReview) => eachReview.id !== action.id);
         default:
             return state;
     }
