@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import { reviews, sort } from './reducers';
-import { addReview, rateReview, removeReview, sortReviews } from './actionCreators';
+// import { addReview, rateReview, removeReview, sortReviews } from './actionCreators';
 import initialState from './initialState';
 
 /** 
@@ -19,12 +19,12 @@ import initialState from './initialState';
  *                     Returns a function that can be called to unsubscribe the listener
  */
 
- 
+
 const store = createStore(
     combineReducers({ reviews, sort }),
     initialState
 );
-
+/*
 const newReviewAction = addReview(
     "Divinity Original Sin II", 
     "https://assets1.ignimgs.com/2019/01/16/divinity-original-sin-2---button-fin-1547678837529.jpg",
@@ -37,3 +37,6 @@ store.dispatch(rateReview(newReviewID, 5));
 store.dispatch(removeReview(newReviewID));
 store.dispatch(sortReviews("title"));
 console.log(store.getState());
+*/
+
+export default store;

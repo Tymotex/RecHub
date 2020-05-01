@@ -1,5 +1,5 @@
 import React from 'react';
-import { v4 } from 'uuid';
+// import { v4 } from 'uuid';
 
 // My components:
 import ReviewList from './ReviewList';
@@ -12,6 +12,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 
+const App = ({ store }) => (
+    <Container>
+        <Jumbotron>
+            <h1 className="header">Games Review!</h1>
+        </Jumbotron>
+        <ReviewList store={store} />
+        <ReviewForm store={store} />
+    </Container>    
+);
+
+export default App;
+/*
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +38,7 @@ class App extends React.Component {
                     colour: "#9770ed"
                 },
                 {
-                    id: v4(),  
+                    id: v4(),
                     gameTitle: "Skyrim",
                     reviewContent: "Skyrim is also amazing.",
                     imgURL: "https://img-eshop.cdn.nintendo.net/i/3a41386d4b0999365727a21cc5c13853cfc244abca39b689bb79a339601e48c3.jpg?w=1000",
@@ -100,5 +112,4 @@ class App extends React.Component {
         );
     }
 } 
-
-export default App;
+*/

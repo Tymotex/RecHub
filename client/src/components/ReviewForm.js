@@ -1,24 +1,31 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { addReview } from '../actionCreators';
 
-const ReviewForm = (props) => {
-    // Callback function that will get called when form data is submitted:
-    let { onNewRating } = props;
-
+const ReviewForm = ({ store }) => {
     // Local variables:
     let _gameTitle, _reviewContent, _imgURL, _rating, _colour;
 
-    const submitRating = (event) => {
+    const submitReview = (event) => {
         event.preventDefault();
         // Passing the form data up the component tree (to the component where state is managed)
-        onNewRating(_gameTitle.value, _reviewContent.value, _imgURL.value, _rating.value, _colour.value);
+        store.dispatch(addReview(
+                _gameTitle.value,
+                _reviewContent.value,
+                _imgURL.value,
+                _rating.value,
+                _colour.value
+            )
+        );
         _gameTitle.value = "";
         _reviewContent.value = "";
+        _rating.value = "";
         _colour.value = "#000000";
         _imgURL.value = "";
     }
 
     return (
-        <form onSubmit={submitRating}>
+        <form onSubmit={submitReview}>
             {/* Instead of ref="_gameTitle", we are passing a callback which takes in a reference to this */}
             {/* component and sets the local variable _gameTitle to thisElem */}
             <input ref={(thisElem) => _gameTitle = thisElem}
@@ -45,5 +52,8 @@ const ReviewForm = (props) => {
     );
 }
 
+ReviewForm.propTypes = {
+    store: PropTypes.object
+};
 
 export default ReviewForm;
