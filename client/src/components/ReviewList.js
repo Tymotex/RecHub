@@ -1,6 +1,6 @@
 import React from 'react';
 import Review from './Review';
-import { rateReview, removeReview } from '../actionCreators';
+import { rateReview, removeReview, sortReviews } from '../actionCreators';
 
 // React-bootstrap components:
 import Card from 'react-bootstrap/Card';
@@ -8,14 +8,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
-const ReviewList = ({ store }) => {
-    const { reviews } = store.getState();
-    
+const ReviewList = (props, { store }) => {
+    const { reviews, sortBy } = store.getState();
+    const sortedReviews = [...reviews].sort((a, b) => {
+        return a.timeCreated - b.timeCreated;
+    });
     return (
         <div>
             <Row>
-                {(reviews && reviews.length > 0) ?
-                    reviews.map((review, i) => {
+                {(sortedReviews && sortedReviews.length > 0) ?
+                    sortedReviews.map((review, i) => {
                         return (
                             <Col key={i} md={6}>
                                 <Card style={{ width: '18rem' }}>
@@ -38,7 +40,5 @@ const ReviewList = ({ store }) => {
         </div>
     );
 }
-
-
 
 export default ReviewList;

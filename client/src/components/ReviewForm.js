@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { addReview } from '../actionCreators';
 
-const ReviewForm = ({ store }) => {
+const ReviewForm = (props, { store }) => {
     // Local variables:
     let _gameTitle, _reviewContent, _imgURL, _rating, _colour;
 
@@ -51,9 +51,5 @@ const ReviewForm = ({ store }) => {
         </form>
     );
 }
-
-ReviewForm.propTypes = {
-    store: PropTypes.object
-};
 
 export default ReviewForm;

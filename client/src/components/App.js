@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // import { v4 } from 'uuid';
 
 // My components:
@@ -12,6 +13,46 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 
+class App extends React.Component {
+    static propTypes = {
+        store: PropTypes.object.isRequired
+    };
+
+    static childContextTypes = {
+        store: PropTypes.object.isRequired
+    };
+
+    getChildContext() {
+        return {
+            store: this.props.store
+        };
+    }
+
+    componentWillMount() {
+        // forceUpdate() will trigger the the updating lifecycle to rerender the UI
+        this.unsub = this.props.store.subscribe(() => this.forceUpdate());
+    }
+
+    componentWillUnmount() {
+        this.unsub();
+    }
+
+    render() {
+        return (
+            <Container>
+                <Jumbotron>
+                    <h1 className="header">Games Review!</h1>
+                </Jumbotron>
+                <ReviewList />
+                <ReviewForm />
+            </Container>         
+        );
+    }
+}
+
+export default App;
+
+/*
 const App = ({ store }) => (
     <Container>
         <Jumbotron>
@@ -21,8 +62,8 @@ const App = ({ store }) => (
         <ReviewForm store={store} />
     </Container>    
 );
+*/
 
-export default App;
 /*
 class App extends React.Component {
     constructor(props) {
