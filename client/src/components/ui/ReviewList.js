@@ -1,6 +1,5 @@
 import React from 'react';
 import Review from './Review';
-import { rateReview, removeReview, sortReviews } from '../actionCreators';
 
 // React-bootstrap components:
 import Card from 'react-bootstrap/Card';
@@ -9,12 +8,12 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 const ReviewList = (props, { store }) => {
-    const { reviews, sortBy } = store.getState();
+    const { reviews, sortBy } = props;
     const sortedReviews = [...reviews].sort((a, b) => {
         return a.timeCreated - b.timeCreated;
     });
     return (
-        <div>
+        <span>
             <Row>
                 {(sortedReviews && sortedReviews.length > 0) ?
                     sortedReviews.map((review, i) => {
@@ -25,9 +24,9 @@ const ReviewList = (props, { store }) => {
                                     <Card.Body style={{backgroundColor: review.colour}}>
                                         <Card.Title>{review.gameTitle}</Card.Title>
                                         <Card.Text>
-                                            <Review {...review} setRating={(newRating) => store.dispatch(rateReview(review.id, newRating))} />
+                                            <Review {...review} setRating={(newRating) => props.onRate(review.id, newRating)} />
                                         </Card.Text>
-                                        <Button onClick={() => store.dispatch(removeReview(review.id))} >
+                                        <Button onClick={() => props.onRemove(review.id)} >
                                             Delete Review
                                         </Button>
                                     </Card.Body>
@@ -37,7 +36,7 @@ const ReviewList = (props, { store }) => {
                     }) : <p>No reviews!</p>
                 }
             </Row>
-        </div>
+        </span>
     );
 }
 

@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 // import { v4 } from 'uuid';
 
 // My components:
-import ReviewList from './ReviewList';
-import ReviewForm from './ReviewForm';
+// import ReviewList from './ui/ReviewList';
+// import ReviewForm from './ui/ReviewForm';
+import { Reviews, AddNewReview } from './containers';
 
 // Importing vanilla bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,42 +14,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 
-class App extends React.Component {
-    static propTypes = {
-        store: PropTypes.object.isRequired
-    };
+const App = ({ store }) => (
+    <Container>
+        <Jumbotron>
+            <h1 className="header">Games Review!</h1>
+        </Jumbotron>
+        <Reviews />
+        <AddNewReview />
+    </Container>    
+);
 
-    static childContextTypes = {
-        store: PropTypes.object.isRequired
-    };
-
-    getChildContext() {
-        return {
-            store: this.props.store
-        };
-    }
-
-    componentWillMount() {
-        // forceUpdate() will trigger the the updating lifecycle to rerender the UI
-        this.unsub = this.props.store.subscribe(() => this.forceUpdate());
-    }
-
-    componentWillUnmount() {
-        this.unsub();
-    }
-
-    render() {
-        return (
-            <Container>
-                <Jumbotron>
-                    <h1 className="header">Games Review!</h1>
-                </Jumbotron>
-                <ReviewList />
-                <ReviewForm />
-            </Container>         
-        );
-    }
-}
 
 export default App;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addReview } from '../actionCreators';
 
 const ReviewForm = (props, { store }) => {
     // Local variables:
@@ -9,14 +8,14 @@ const ReviewForm = (props, { store }) => {
     const submitReview = (event) => {
         event.preventDefault();
         // Passing the form data up the component tree (to the component where state is managed)
-        store.dispatch(addReview(
-                _gameTitle.value,
-                _reviewContent.value,
-                _imgURL.value,
-                _rating.value,
-                _colour.value
-            )
+        props.onNewReview(
+            _gameTitle.value,
+            _reviewContent.value,
+            _imgURL.value,
+            _rating.value,
+            _colour.value
         );
+        
         _gameTitle.value = "";
         _reviewContent.value = "";
         _rating.value = "";
