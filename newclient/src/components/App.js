@@ -1,16 +1,13 @@
 import React from 'react';
-import Navigation from './Navigation';
+import GameList from './ui/GameList';
 
-const LINKS = [
-	{ label: 'Website', to: 'https://www.robinwieruch.de/' },
-	{ label: 'Twitter', to: 'https://twitter.com/rwieruch' },
-];
+// Material UI:
+import Container from '@material-ui/core/Container';
 
 const App = () => (
-	<div>
-		hello
-		<Navigation links={LINKS} />
-	</div>
+	<Container>
+		<GameList />
+	</Container>
 );
 
 export default App;
