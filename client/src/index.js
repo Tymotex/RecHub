@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
 import store from './store';
 
 const render = () => ReactDOM.render(
-	<App store={store}/>,
+	// The provider adds the store to the context
+	<Provider store={store}>
+		<App />
+	</Provider>,
 	document.getElementById('root')
 );
 
