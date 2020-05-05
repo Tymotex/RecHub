@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './theme';
+import { violetTheme } from './theme';
+
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<ThemeProvider theme={theme}>
+		<CssBaseline />
+		<ThemeProvider theme={violetTheme}>
 			<App />
 		</ThemeProvider>
 	</React.StrictMode>,
