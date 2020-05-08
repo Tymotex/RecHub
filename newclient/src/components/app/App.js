@@ -1,9 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import GameList from './ui/GameList';
-import NavigationBar from './ui/Navbar';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import Showcase from './ui/Carousel';
+import { GameList } from '../games';
+import { TopNav } from '../top-nav';
+import { Showcase } from '../carousel';
+
 // Importing roboto immediately applies the style to the whole project
 import 'typeface-roboto';  
 import { Container } from 'react-bootstrap';
@@ -26,10 +26,8 @@ const App = (props) => {
 					}
 				`}</style>
 			</Helmet>
-			<NavigationBar />
-			<ParallaxProvider>
-				<Showcase />
-			</ParallaxProvider>
+			<TopNav />
+			<Showcase />
 			<Container>
 				<GameList />
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

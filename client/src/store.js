@@ -1,29 +1,28 @@
 import { createStore, combineReducers } from 'redux';
 import { reviews, sort } from './reducers';
 // import { addReview, rateReview, removeReview, sortReviews } from './actionCreators';
-import initialState from './initialState';
+import initialState from './seed/initialState';
 
 /** 
  * State updates are done by sending this whole state object through a SINGLE
- * reducer that will delegate tasks to smaller reducers.
- * To create this single reducer, we need to compose all smaller reducers 
- * using combineReducers() to combine all reducers to a single reducer to
- * be used centrally.
+ * reducer that will delegate tasks to smaller reducers. To create this single
+ * reducer, we need to compose all smaller reducers using combineReducers() 
+ * to combine all reducers to a single reducer to be used centrally.
  *
  * ===== Store methods =====
  * getState()       -- returns the current application state
- * dispatch(action) -- the only way to change application state
- *                     the action is sent through reducers which handle setting the state!
- * subscribe(func)  -- subscribing a function to a store means that that function will
- *                     will be invoked when dispatch() finishes 
+ * dispatch(action) -- the only way to change application state the action is sent through reducers which handle setting the state!
+ * subscribe(func)  -- subscribing a function to a store means that that function will will be invoked when dispatch() finishes 
  *                     Returns a function that can be called to unsubscribe the listener
  */
 
-
+// Creating the store using a single combined reducer and initialising
+// it with some seed data inside 'initialState.js'
 const store = createStore(
     combineReducers({ reviews, sort }),
     initialState
 );
+
 /*
 const newReviewAction = addReview(
     "Divinity Original Sin II", 

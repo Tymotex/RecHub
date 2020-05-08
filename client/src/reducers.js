@@ -54,5 +54,3 @@ export const sort = (state="SORT_BY_DATE", action) => {
             return state;
     }
 }
-
-

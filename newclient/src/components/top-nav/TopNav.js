@@ -4,7 +4,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import { NavDropdown, Nav, Form, FormControl } from 'react-bootstrap';
 
 const NavigationBar = (props) => {
-
     return (
         <Navbar fixed="top" bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="#home">Rec-Hub</Navbar.Brand>
@@ -26,7 +25,7 @@ const NavigationBar = (props) => {
                 <Button variant="outline-success">Search</Button>
                 </Form>
             </Navbar.Collapse>
-            </Navbar>
+        </Navbar>
     );
 }
 

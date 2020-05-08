@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { ParallaxProvider } from 'react-scroll-parallax';
 import { Carousel } from 'react-bootstrap';
 import ParallaxImage from './ParallaxImage';
 
 const Showcase = (props) => {
     return (
+        <ParallaxProvider>
             <Carousel>
                 <Carousel.Item>
                     <ParallaxImage imgURL="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" />
@@ -27,7 +29,8 @@ const Showcase = (props) => {
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
-            </Carousel>        
+            </Carousel> 
+        </ParallaxProvider>
     );
 }
 

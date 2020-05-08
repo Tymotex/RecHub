@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { v4 } from 'uuid';
 
 // My components:
 // import ReviewList from './ui/ReviewList';
@@ -23,7 +22,6 @@ const App = ({ store }) => (
         <AddNewReview />
     </Container>    
 );
-
 
 export default App;
 
