@@ -1,1 +1,2 @@
-export { default as GameList } from './GameList';
+// export { default as GameList } from './GameListContainer';
+export { default as GameList } from './GameListContainer';
