@@ -1,4 +1,5 @@
 import React from 'react';
+import PageTemplate from '../components/PageTemplate';
 
 // Other components:
 import { GameList } from '../components/games';
@@ -9,12 +10,12 @@ import { Container } from 'react-bootstrap';
 
 const Home = () => {
     return (
-        <div>
+        <PageTemplate>
             <Showcase />
             <Container>
                 <GameList />
             </Container>
-        </div>
+        </PageTemplate>
     )
 }
 

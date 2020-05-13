@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Navbar from 'react-bootstrap/Navbar';
-import { NavDropdown, Nav, Form, FormControl } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+
+// Bootstrap components and icons:
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faUserPlus, faGamepad } from '@fortawesome/free-solid-svg-icons';
+import { Button, Navbar, NavDropdown, Nav, Form, FormControl } from 'react-bootstrap';
 
 const NavigationBar = (props) => {
     return (
@@ -12,13 +14,13 @@ const NavigationBar = (props) => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <Nav.Link>
-                    <Link to="/">Home</Link>
+                    <NavLink activeStyle={{color: "red"}} exact to="/"><FontAwesomeIcon icon={faGamepad} /> Home</NavLink>
                 </Nav.Link>
                 <Nav.Link>
-                    <Link to="/register">Register</Link>
+                    <NavLink activeStyle={{color: "red"}} to="/register"><FontAwesomeIcon icon={faUserPlus} /> Register</NavLink>
                 </Nav.Link>
                 <Nav.Link>
-                    <Link to="/login">Log In</Link>
+                    <NavLink activeStyle={{color: "red"}} to="/login"><FontAwesomeIcon icon={faSignInAlt} /> Log In</NavLink>
                 </Nav.Link>
                 <NavDropdown title="Games" id="basic-nav-dropdown">
                     <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -28,10 +30,10 @@ const NavigationBar = (props) => {
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                 </NavDropdown>
                 </Nav>
-                <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-success">Search</Button>
-                </Form>
+                {/* <Form inline>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    <Button variant="outline-success">Search</Button>
+                </Form> */}
             </Navbar.Collapse>
         </Navbar>
     );
