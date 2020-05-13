@@ -17,6 +17,6 @@ const Home = () => {
             </Container>
         </PageTemplate>
     )
-}
+};
 
 export default Home;
