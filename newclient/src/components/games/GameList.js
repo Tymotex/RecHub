@@ -1,6 +1,8 @@
 import React from 'react';
 import Game from './Game';
 
+import { CardDeck } from 'react-bootstrap';
+
 // ===== Component Definition =====
 // const GameList = (props) => {
 //     props.fuck();
@@ -15,16 +17,17 @@ import Game from './Game';
 
 class GameList extends React.Component {
     componentDidMount() {
-        this.props.addNewGame();
+        this.props.getGames();
     }
 
     render() {
         return (
-            <div>
+            <CardDeck>
                 {this.props.games.map((currGame) => (
                     <Game {...currGame} />
                 ))}
-            </div>
+            </CardDeck>
+            
         );
     }
 }

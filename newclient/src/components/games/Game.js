@@ -1,16 +1,21 @@
 import React from 'react';
 
-import { Image, Spinner } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 
 // ===== Component Definition =====
-const Game = (props) => {
+const Game = ({ title, description, coverImgURL }) => {
     return (
-        <div>
-            <h1>{props.title}</h1>
-            <Image src={props.coverImgURL} fluid />
-            <p>{props.description}</p>
-            <Spinner animation="grow" />
-        </div>
+        <Card>
+            <Card.Img variant="top" src={coverImgURL} />
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text>{description}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+                <small className="text-muted">Last updated 3 mins ago</small>
+                <Spinner animation="grow" />
+            </Card.Footer>
+        </Card>
     );
 };
 
