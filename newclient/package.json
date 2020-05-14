@@ -20,7 +20,10 @@
     "react-scripts": "3.4.1",
     "react-scroll-parallax": "^2.3.2",
     "redux": "^4.0.5",
-    "typeface-roboto": "0.0.75"
+    "redux-thunk": "^2.3.0",
+    "thunk": "0.0.1",
+    "typeface-roboto": "0.0.75",
+    "uuid": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

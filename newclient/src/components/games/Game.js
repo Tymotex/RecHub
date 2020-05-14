@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Image } from 'react-bootstrap';
+import { Image, Spinner } from 'react-bootstrap';
 
 // ===== Component Definition =====
 const Game = (props) => {
@@ -9,6 +9,7 @@ const Game = (props) => {
             <h1>{props.title}</h1>
             <Image src={props.coverImgURL} fluid />
             <p>{props.description}</p>
+            <Spinner animation="grow" />
         </div>
     );
 };

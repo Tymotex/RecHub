@@ -3,11 +3,9 @@ import C from '../constants/actionTypes';
 export const game = (state={}, action) => {
     switch (action.type) {
         case (C.ADD_GAME):
+            // action.payload should consist of: id, title, description, coverImgURL
             return {
-                id: action.id,
-                title: action.title,
-                description: action.description,
-                coverImgURL: action.coverImgURL 
+                ...action.payload
             }
         default:
             return state
