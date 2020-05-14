@@ -2,9 +2,13 @@ import { connect } from 'react-redux';
 import GameList from './GameList';
 import { addGame, fetchGames } from '../../actionCreators/gameActions';
 
-const mapStateToProps = (state) => ({
-    games: state.games
-});
+const mapStateToProps = (state) => {
+    return {
+        games: state.games.gameList,
+        isFetching: state.games.isFetching,
+        isSuccess: state.games.isSuccess
+    }
+};
 
 const mapDispatchToProps = (dispatch) => ({
     addNewGame: () => {

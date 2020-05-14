@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Spinner } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 // ===== Component Definition =====
 const Game = ({ title, description, coverImgURL }) => {
@@ -13,7 +13,6 @@ const Game = ({ title, description, coverImgURL }) => {
             </Card.Body>
             <Card.Footer>
                 <small className="text-muted">Last updated 3 mins ago</small>
-                <Spinner animation="grow" />
             </Card.Footer>
         </Card>
     );

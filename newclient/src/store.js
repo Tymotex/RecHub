@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+// import logger from 'redux-logger'
 import { gameList } from './reducers/GameListReducer';
 import initialState from './seed/initialState';
 

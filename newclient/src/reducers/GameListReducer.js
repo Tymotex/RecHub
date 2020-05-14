@@ -3,7 +3,7 @@ import C from '../constants/actionTypes';
 export const game = (state={}, action) => {
     switch (action.type) {
         case (C.ADD_GAME):
-            // action.payload should consist of: id, title, description, coverImgURL
+            // The payload should consist of: id, title, description, coverImgURL
             return {
                 ...action.payload
             }
@@ -12,13 +12,26 @@ export const game = (state={}, action) => {
     }
 }
 
-export const gameList = (state=[], action) => {
+export const gameList = (state={}, action) => {
     switch (action.type) {
-        case (C.ADD_GAME):
-            return [
+        case (C.FETCHING_GAMES):
+            return {
                 ...state,
-                game({}, action)
-            ]
+                isFetching: true
+            }
+        case (C.FETCHED_GAMES):
+            return {
+                ...state,
+                isFetching: false,
+                isSuccess: action.payload.isSuccess
+            }
+        case (C.ADD_GAME):
+            return {
+                gameList: [
+                    ...state.gameList,
+                    game({}, action)
+                ]
+            }
         default:
             return state
     }
