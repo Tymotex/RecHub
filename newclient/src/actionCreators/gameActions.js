@@ -35,7 +35,7 @@ export const fetchGames = () => {
                     dispatch(addGame("Skyrim", "Winner of more than 200 Game of the Year Awards, Skyrim Special Edition brings the epic fantasy to life in stunning detail. The Special Edition includes the critically acclaimed game and add-ons with all-new features like remastered art and effects, volumetric god rays, dynamic depth of field, screen-space reflections, and more. Skyrim Special Edition also brings the full power of mods to the PC and consoles. New quests, environments, characters, dialogue, armor, weapons and more – with Mods, there are no limits to what you can experience.", "https://elderscrolls.bethesda.net/assets/imgs/meta/skyrim-facebook.jpg"));
                     dispatch(addGame("Dragon Age Inquisition", "Dragon Age: Inquisition is an action role-playing video game developed by BioWare and published by Electronic Arts. The third major game in the Dragon Age franchise, Dragon Age: Inquisition is the sequel to Dragon Age: Origins and Dragon Age II.", "https://cdn.mos.cms.futurecdn.net/ykkhJshuUd2RVjB9A44sHa.jpg"));
                     dispatch(fetchedGames(true));
-                }, 3000);
+                }, 1000);
             })
             .catch((err) => {
                 dispatch(fetchedGames(false))

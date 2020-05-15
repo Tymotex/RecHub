@@ -1,14 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Card } from 'react-bootstrap';
+import './Game.scss';
 
 // ===== Component Definition =====
 const Game = ({ title, description, coverImgURL }) => {
     return (
-        <Card>
-            <Card.Img variant="top" src={coverImgURL} />
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
+        <Card className="game-card">
+            <Link to="/login"><Card.Img className="game-cover-image" variant="top" src={coverImgURL} /></Link>
+            <Card.Body className="game-card-body">
+                <Link className="link-no-underline" to="/login"><Card.Title>{title}</Card.Title></Link>
                 <Card.Text>{description}</Card.Text>
             </Card.Body>
             <Card.Footer>

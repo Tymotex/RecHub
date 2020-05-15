@@ -1,0 +1,13 @@
+$linkHoverColour: slategray;
+
+// Removes the stubborn underline on hover over anchor elements:
+a {
+    &:hover, &:visited, &:link, &:active {
+        text-decoration: none!important;
+        color: white;
+        transition: color 0.15s ease;
+    }
+    &:hover {
+        color: $linkHoverColour!important;
+    }
+}

@@ -1,0 +1,25 @@
+$darkBackground: darkslategrey;
+$lightText: whitesmoke;
+
+@mixin colorScheme($backgroundColor, $textColor) {
+	background-color: darkslategrey;
+	color: white;
+}
+
+.game-card {
+	.game-cover-image {
+		&:hover {  
+			-webkit-filter: blur(1px); /* Safari 6.0 - 9.0 */
+			filter: blur(1px) grayscale(1);
+			transition: all 0.1s ease-out; 
+		}
+	}
+	.game-card-body {
+		@include colorScheme($darkBackground, $lightText);
+		.card-title {
+			text-align: center;
+		}
+	}
+}
+
+
