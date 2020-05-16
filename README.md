@@ -1,5 +1,6 @@
 # RecHub
-A games and music recommendation, browsing and review hub. Built with Express and React.
+Built with MongoDB, Express, React and Node.js!
+The React frontend uses of `react-redux` for state management and `react-router-dom` for routing.
 
 ## API Documentation:
 | Route         | METHOD | Parameters |                                                 Returns |
