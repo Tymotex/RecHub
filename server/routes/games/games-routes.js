@@ -1,10 +1,67 @@
 const express = require("express"),
+      colours = require("colors"),    // This is for colouring the console output! :D
       axios = require("axios");
 
 const router = express.Router();
 
-BASE_URL = "https://api-v3.igdb.com";
+// Constants:
+const IGDB_BASE_URL = "https://api-v3.igdb.com";
 
+router.get("/list", function(req, res) {
+    console.log("===== Fetching a List of Games! =====".blue.underline);
+    axios({
+            url: `${IGDB_BASE_URL}/games`,
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "user-key": process.env.IGDB_API_KEY
+            },
+            data: "fields name,popularity; sort popularity desc;"
+        })
+        .then((gamesList) => {
+            console.log("===> Fetched games SUCCEEDED".green);
+            axios({
+                    url: `${IGDB_BASE_URL}/covers`,
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "user-key": process.env.IGDB_API_KEY
+                    },
+                    data: `fields game, image_id;
+                           where game = (115278,120268,105049,113344,19164,1877,115653,36198,22422,96217,26845,55038);
+                           limit 100;`
+                })
+                .then((gameCover) => {
+                    console.log("===> Fetched game covers SUCCEEDED".green);
+                    // Adding a field 'coverImages' that will contain a list of URLs to the cover
+                    // image of each game (formatted like: https://images.igdb.com/.../img.jpg)
+                    gamesList.data.forEach((currGame) => {
+                        currGame.coverImages = [];
+                        gameCover.data.forEach((cover) => {
+                            if (cover.game === currGame.id) {
+                                // Choosing size: cover_big -> 264 x 374 
+                                // see docs: https://api-docs.igdb.com/#images)
+                                const formattedURL = `https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`
+                                currGame.coverImages.push(formattedURL);
+                            }
+                        })
+                    });
+                    return res.json({
+                        games: gamesList.data
+                    });
+                })
+                .catch((err) => {
+                    console.log("===> Fetched game covers FAILED".red);
+                })
+        })
+        .catch((err) => {
+            console.log("===> Fetched games FAILED".red);
+        });
+});
+
+module.exports = router;
+
+/*
 router.get("/", (req, res) => {
     var getCompanyData = { 
         method: "POST",
@@ -43,6 +100,4 @@ router.get("/", (req, res) => {
             });
         });
 });
-
-
-module.exports = router;
+*/

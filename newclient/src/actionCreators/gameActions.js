@@ -1,6 +1,9 @@
 import axios from 'axios';
 import { v4 } from 'uuid';
 import C from '../constants/actionTypes';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const addGame = (title, description, coverImgURL) => ({
     type: C.ADD_GAME,
@@ -25,9 +28,22 @@ export const fetchedGames = (outcome) => ({
 
 export const fetchGames = () => {
     return (dispatch, getState) => {
-        // let currState = getState();
         dispatch(fetchingGames())
-        axios.get("https://api.randomuser.me/?results=10")
+
+        const postData = {
+
+        };
+
+        // axios({
+        //         url: "https://api-v3.igdb.com/games",
+        //         method: "POST",
+        //         headers: {
+        //             "Accept": "application/json",
+        //             "user-key": process.env.IGDB_API_KEY
+        //         },
+        //         data: "fields name,popularity; sort popularity desc;"
+        //     })
+        axios.get("http://localhost:3001/games/list")
             .then((response) => {
                 // TODO: Remove this artificial delay. This is just to make sure that the loading spinner was showing up correctly
                 setTimeout(() => {
@@ -42,5 +58,3 @@ export const fetchGames = () => {
             });
     };
 };
-
-
