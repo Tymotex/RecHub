@@ -2,7 +2,7 @@
 A games and music recommendation, browsing and review hub. Built with Express and React.
 
 ## API Documentation:
-| Route         | Parameters |                                                 Outputs |
-| :------------ | :--------: | ------------------------------------------------------: |
-| games/list    |    TODO    | { games: [{ id, name, coverImages, popularity }, ...] } |
-| games/details |  game_id   |                                                { TODO } |
+| Route         | METHOD | Parameters |                                                 Returns |
+| :------------ | :----: | :--------: | ------------------------------------------------------: |
+| games/list    |  GET   |    TODO    | { games: [{ id, name, coverImages, popularity }, ...] } |
+| games/details |  GET   |  game_id   |                                                { TODO } |
