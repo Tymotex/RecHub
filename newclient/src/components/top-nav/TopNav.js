@@ -16,6 +16,7 @@ const NavigationBar = (props) => {
                 <Nav.Link as={NavLink} activeStyle={{color: "violet"}} exact to="/"><FontAwesomeIcon icon={faGamepad} /> Home</Nav.Link>
                 <Nav.Link as={NavLink} activeStyle={{color: "violet"}} to="/register"><FontAwesomeIcon icon={faUserPlus} /> Register</Nav.Link>
                 <Nav.Link as={NavLink} activeStyle={{color: "violet"}} to="/login"><FontAwesomeIcon icon={faSignInAlt} /> Log In</Nav.Link>
+                <Nav.Link href="https://api-docs.igdb.com/#about">IGDB API Docs</Nav.Link>
                 <NavDropdown title="Games" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/#/games/rpg">Genres</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>

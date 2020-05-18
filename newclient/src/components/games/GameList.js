@@ -22,7 +22,7 @@ class GameList extends React.Component {
                     (this.props.games.length > 0) ?
                             <Row>
                                 {this.props.games.map((currGame, i) => (
-                                    <Col key={i} xs={12} md={6} lg={4} xl={3}>
+                                    <Col key={i} xs={12} md={6} lg={4}>
                                         <Game {...currGame} />
                                     </Col>
                                 ))}

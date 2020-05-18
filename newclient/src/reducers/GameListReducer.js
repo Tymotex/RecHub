@@ -27,6 +27,7 @@ export const gameList = (state={}, action) => {
             }
         case (C.ADD_GAME):
             return {
+                ...state,
                 gameList: [
                     ...state.gameList,
                     game({}, action)

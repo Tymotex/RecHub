@@ -1,1 +1,1 @@
-export { default as Showcase } from './Carousel';
+export { default as Showcase } from './ShowcaseContainer';

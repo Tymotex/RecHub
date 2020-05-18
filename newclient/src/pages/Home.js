@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <PageTemplate>
             <Showcase />
-            <Container>
+            <Container style={{maxWidth: "90%"}}>
                 <GameList />
             </Container>
         </PageTemplate>

@@ -1,6 +1,7 @@
 export default {
     games: {
         isFetching: false,
+        isSuccess: true,
         gameList: [
             {
                 id: 1,
@@ -16,6 +17,17 @@ export default {
                 description: `The critically acclaimed RPG that raised the bar, from the creators of Baldur's Gate 3. Gather your party. Master deep, tactical combat. Venture as a party of up to four - but know that only one of you will have the chance to become a God.`,
                 coverImgURL: "https://steamcdn-a.akamaihd.net/steam/apps/435150/capsule_616x353.jpg?t=1568735755"
             }
+        ]
+    },
+    showcase: {
+        isFetching: false,
+        isSuccess: true,
+        showcaseItems: [
+            // {
+            //     title: "Divinity Original Sin II",
+            //     description: `The critically acclaimed RPG that raised the bar, from the creators of Baldur's Gate 3. Gather your party. Master deep, tactical combat. Venture as a party of up to four - but know that only one of you will have the chance to become a God.`,
+            //     image: "https://steamcdn-a.akamaihd.net/steam/apps/435150/capsule_616x353.jpg?t=1568735755"
+            // }
         ]
     }
 };
