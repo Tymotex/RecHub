@@ -127,9 +127,7 @@ router.get("/details", function(req, res) {
         })
         .then((gameDetails) => {
             console.log("===> Fetched game details SUCCEEDED".green);
-            return res.json({
-                currGame: gameDetails.data[0]
-            });
+            return res.json(gameDetails.data[0]);
         })
         .catch((err) => {
             console.log("===> Fetched game details FAILED".red, err);
