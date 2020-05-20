@@ -1,6 +1,7 @@
 const express = require("express"),
       dotenv = require("dotenv"),
       cors = require('cors'),
+      bodyParser = require("body-parser"),
       axios = require("axios");
 
 const nasaRouter = require("./routes/nasa/nasa-routes"),
@@ -13,11 +14,12 @@ const app = express();
 const IGDB_BASE_URL = "https://api-v3.igdb.com";
 
 // ===== Configuration =====
-// === Express config ===
+// === Express and Middleware Config ===
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use("/libs", express.static(__dirname + "/node_modules/"));
 app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // === Routes ===
 app.use("/nasa", nasaRouter);  // For testing HTTP requests to NASA's API

@@ -16,4 +16,16 @@ const showcaseActionTypes = {
     FETCHED_SHOWCASE: "FETCHED_SHOWCASE"
 };
 
-export default Object.assign({}, gameActionTypes, showcaseActionTypes);
+const gameDetailActionTypes = {
+    FETCH_GAME_DETAILS: "FETCH_GAME_DETAILS",
+    FETCHING_GAME_DETAILS: "FETCHING_GAME_DETAILS",
+    FETCHED_GAME_DETAILS: "FETCHED_GAME_DETAILS"
+};
+
+// Composing all the constants into a single object:
+export default Object.assign(
+    {},
+    gameActionTypes,
+    showcaseActionTypes,
+    gameDetailActionTypes
+);

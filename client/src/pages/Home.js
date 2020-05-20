@@ -3,7 +3,7 @@ import PageTemplate from '../components/PageTemplate';
 
 // Other components:
 import { GameList } from '../components/games';
-import { Showcase } from '../components/carousel';
+import { Showcase } from '../components/showcase';
 
 // Bootstrap components:
 import { Container } from 'react-bootstrap';

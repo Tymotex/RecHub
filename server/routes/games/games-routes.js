@@ -18,6 +18,7 @@ const formatReqObject = (endpoint) => ({
 });
 
 // TODO: Helper function documentation
+// This is inflexible. Maybe I should have arrays as arguments that specify the fields, the where condition, etc. 
 async function fetchGameList(numGames, sortBy) {
     return axios({
             ...formatReqObject("games"),
@@ -114,45 +115,25 @@ router.get("/showcase", async function(req, res) {
         })
 });
 
-module.exports = router;
-
-/*
-router.get("/", (req, res) => {
-    var getCompanyData = { 
-        method: "POST",
-        url: `${BASE_URL}/companies`,
-        headers: {
-            "user-key": process.env.IGDB_API_KEY 
-        },
-        data: 'fields developed; where name="Atlus";',
-        json: true
-    }
-    axios(getCompanyData)
-        .then((response) => {
-            developedGames = response.data[0].developed.join(", ");
-            var getGamesBy = { 
-                method: "POST",
-                url: `${BASE_URL}/games`,
-                headers: {
-                    "user-key": process.env.IGDB_API_KEY 
-                },
-                data: `fields *; where id=(${developedGames}); limit 10; sort popularity desc;`,
-                json: true
-            };
-            axios(getGamesBy)
-                .then((nextRes) => {
-                    res.send(nextRes.data);
-                })
-                .catch((err) => {
-                    res.render("error", {
-                        err: err
-                    });
-                });
+// Fetching details about a particular game, given its ID
+router.get("/details", function(req, res) {
+    console.log("===== Fetching game showcase! =====".blue.underline);
+    const gameID = req.query.gameID;
+    axios({
+            ...formatReqObject("games"),
+            data: `fields *;
+                   where id=${gameID};
+                   limit 1;`
+        })
+        .then((gameDetails) => {
+            console.log("===> Fetched game details SUCCEEDED".green);
+            return res.json({
+                currGame: gameDetails.data[0]
+            });
         })
         .catch((err) => {
-            res.render("error", {
-                err: err
-            });
+            console.log("===> Fetched game details FAILED".red, err);
         });
 });
-*/
+
+module.exports = router;

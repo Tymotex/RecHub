@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Row, Col, Card, Image } from 'react-bootstrap';
+import { Card, Image } from 'react-bootstrap';
 import './Game.scss';
 
 // ===== Component Definition =====
-const Game = ({ title, description, coverImgURL, totalRating }) => {
+const Game = ({ id, title, description, coverImgURL, totalRating }) => {
     return (
         <Card className="game-card" style={{maxHeight: "600px", minHeight: "600px"}}>
-                <Link to="/login">
+                <Link to={`/game/${id}`}>
                     <Image className="game-cover-image" fluid src={coverImgURL}  />
                 </Link>
 

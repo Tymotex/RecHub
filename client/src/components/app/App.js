@@ -16,7 +16,7 @@ const App = () => {
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 				<Route path="/games" component={Games} />
-				<Route path="/ass" component={Game} />
+				<Route path="/game/:id" component={Game} />
 				{/* <Redirect from="/genres" to="/games" /> */}
 				<Route component={Error404} />
 			</Switch>

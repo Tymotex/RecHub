@@ -28,11 +28,7 @@ class Showcase extends React.Component {
                                     </Carousel.Item>
                                 )) :
                                 (<p>No carousel items. Something went wrong!</p>)
-                            }
-                            <ParallaxImage imgURL="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/11/62183877c031915a7d053114cfca2690.jpg" />
-                                        
-                            <ParallaxImage imgURL="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2019/11/62183877c031915a7d053114cfca2690.jpg" />
-                                        
+                            }         
                         </Carousel> 
                     </ParallaxProvider> :
                     <p>Request failed!</p>

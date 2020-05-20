@@ -1,17 +1,13 @@
 import React from 'react';
 import PageTemplate from '../components/PageTemplate';
-
-// Bootstrap components
-import { Container } from 'react-bootstrap';
+import { GameDetails } from '../components/game-details';
 
 // The 'match' prop contains the route parameters inside the route: /game/:id
 const Game = ({ match }) => {
     console.log("Hit");
     return (
         <PageTemplate>
-            <Container>
-                <h1>The ID of the game to be displayed is {match.params.id}</h1>
-            </Container>
+            <GameDetails currGameID={match.params.id} />
         </PageTemplate>
     )
 }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import C from '../constants/actionTypes';
+import { BASE_URL } from '../constants/api';
 
 // TODO: Refactor
 export const addShowcase = (title, description, image) => ({
@@ -26,18 +27,13 @@ export const fetchedShowcase = (outcome) => ({
 export const fetchShowcase = () => {
     return (dispatch, getState) => {
         dispatch(fetchingShowcase());        
-        axios.get("http://localhost:3001/games/showcase")
+        axios.get(`${BASE_URL}/games/showcase`)
             .then((response) => {
-                // TODO: Remove this artificial delay. This is just to make sure that the loading spinner was showing up correctly
-                setTimeout(() => {
-                    console.log("RECEIVED DATA!", response.data);
-                    for (let i = 0; i < response.data.showcase.length; i++) {
-                        const { title, description, screenshots } = response.data.showcase[i];
-                        dispatch(addShowcase(title, description, screenshots[0]));
-                    }
-                    
-                    dispatch(fetchedShowcase(true));
-                }, 500);
+                for (let i = 0; i < response.data.showcase.length; i++) {
+                    const { title, description, screenshots } = response.data.showcase[i];
+                    dispatch(addShowcase(title, description, screenshots[0]));
+                }
+                dispatch(fetchedShowcase(true));
             })
             .catch((err) => {
                 dispatch(fetchedShowcase(false))
