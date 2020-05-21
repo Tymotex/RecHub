@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 import './App.scss';
@@ -10,17 +10,16 @@ import 'typeface-roboto';
 
 const App = () => {
 	return (
-		<HashRouter>
+		<Router>
 			<Switch>
-				<Route exact path="/" component={Home} />
+				<Route exact={true} path="/" component={Home} />
 				<Route path="/register" component={Register} />
 				<Route path="/login" component={Login} />
 				<Route path="/games" component={Games} />
-				<Route path="/game/:id" component={Game} />
-				{/* <Redirect from="/genres" to="/games" /> */}
+				<Route path="/game/:gameID" component={Game} />
 				<Route component={Error404} />
 			</Switch>
-		</HashRouter>
+		</Router>
 	);
 };
 
