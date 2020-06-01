@@ -15,6 +15,13 @@ export const addGame = (id, title, description, coverImgURL, totalRating) => ({
     }
 });
 
+export const addGameList = (games) => ({
+    type: C.ADD_GAME_LIST,
+    payload: {
+        games: games
+    }
+});
+
 export const fetchingGames = () => ({
     type: C.FETCHING_GAMES
 });
@@ -32,13 +39,22 @@ export const fetchGames = () => {
         dispatch(fetchingGames());        
         axios.get(`${BASE_URL}/games/list`)
             .then((response) => {
-                for (let i = 0; i < response.data.games.length; i++) {
-                    const { id, name, summary, total_rating, coverImages } = response.data.games[i];
-                    dispatch(addGame(id, name, summary, coverImages[0], total_rating));
-                }
+                const resGames = response.data.games.map((eachGame) => {
+                    const { id, name, summary, total_rating, coverImages } = eachGame;
+                    return {
+                        id: id,
+                        name: name,
+                        description: summary,
+                        total_rating: total_rating, 
+                        coverImgURL: coverImages[0]
+                    };
+                });
+                console.log("Fetched game list", resGames);
+                dispatch(addGameList(resGames));
                 dispatch(fetchedGames(true));
             })
             .catch((err) => {
+                console.log(err);
                 dispatch(fetchedGames(false));
             });
     };

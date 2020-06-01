@@ -1,11 +1,9 @@
 import C from '../constants/actionTypes';
 
-export const showcaseItem = (state={}, action) => {
+export const showcaseItems = (state=[], action) => {
     switch (action.type) {
-        case (C.ADD_SHOWCASE):
-            return {
-                ...action.payload
-            };
+        case (C.ADD_SHOWCASE_ITEMS):
+            return action.payload.showcaseItems;
         default:
             return state;
     }
@@ -13,13 +11,10 @@ export const showcaseItem = (state={}, action) => {
 
 export const showcase = (state={}, action) => {
     switch (action.type) {
-        case (C.ADD_SHOWCASE):
+        case (C.ADD_SHOWCASE_ITEMS):
             return {
                 ...state,
-                showcaseItems: [
-                    ...state.showcaseItems,
-                    showcaseItem({}, action)
-                ]
+                showcaseItems: showcaseItems([], action)
             };
         case (C.FETCHING_SHOWCASE):
             return {

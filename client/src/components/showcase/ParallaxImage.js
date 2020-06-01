@@ -1,21 +1,19 @@
 import React from 'react';
-import { ParallaxBanner } from 'react-scroll-parallax';
+// import { ParallaxBanner } from 'react-scroll-parallax';
+
+import { Parallax, Background } from 'react-parallax';
+import './ParallaxImage.scss';
 
 const ParallaxImage = (props) => {
     return (
-        <ParallaxBanner
-            className="d-block w-100"
-            layers={[
-                {
-                    image: props.imgURL,
-                    amount: 0.3,
-                }
-            ]}
-            style={{
-                height: '500px',
-            }}
-            alt="First slide"
-        ></ParallaxBanner>
+        <Parallax
+            blur={2}
+            bgImage={props.imgURL}
+            bgImageAlt="the cat"
+            strength={300}
+        >
+            <div style={{ height: '700px' }} />
+        </Parallax>
     );
 }
 

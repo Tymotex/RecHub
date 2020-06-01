@@ -3,7 +3,7 @@ import Showcase from './Showcase';
 import { fetchShowcase } from '../../actionCreators/showcaseActions';
 
 const mapStateToProps = (state) => ({
-    showcase: state.showcase.showcaseItems,
+    showcaseItems: state.showcase.showcaseItems,
     isFetching: state.games.isFetching,
     isSuccess: state.games.isSuccess
 });

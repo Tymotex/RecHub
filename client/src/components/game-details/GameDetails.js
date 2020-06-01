@@ -14,6 +14,7 @@ const Game = ({ getGameDetails, history, match, location }) => {
     return (
         <Container>
             <h1>The ID of the game to be displayed is {gameID}</h1>
+            <Showcase />
         </Container>
     )
 }

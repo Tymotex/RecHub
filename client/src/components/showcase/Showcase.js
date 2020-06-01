@@ -1,9 +1,14 @@
 import React from 'react';
 import { LoadingSpinner } from '../loading-spinner';
 
-import { ParallaxProvider } from 'react-scroll-parallax';
-import { Carousel } from 'react-bootstrap';
+// import { ParallaxProvider } from 'react-scroll-parallax';
+// import { Carousel } from 'react-bootstrap';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
 import ParallaxImage from './ParallaxImage';
+
+import { Parallax, Background } from 'react-parallax';
 
 class Showcase extends React.Component {
     componentDidMount() {
@@ -12,26 +17,33 @@ class Showcase extends React.Component {
 
     render() {
         return (
-            (this.props.isFetching) ? 
-                <LoadingSpinner />  :
-                (this.props.isSuccess) ? 
-                    <ParallaxProvider>
-                        <Carousel>
-                            {(this.props.showcase.length > 0) ? 
-                                this.props.showcase.map((currItem, i) => (
-                                    <Carousel.Item key={i}>
-                                        <ParallaxImage imgURL={currItem.image} />
-                                        <Carousel.Caption style={{backgroundColor: "black"}}>
-                                            <h3>{currItem.title}</h3>
-                                            <p>{currItem.description}</p>
-                                        </Carousel.Caption>
-                                    </Carousel.Item>
-                                )) :
-                                (<p>No carousel items. Something went wrong!</p>)
-                            }         
-                        </Carousel> 
-                    </ParallaxProvider> :
-                    <p>Request failed!</p>
+            (this.props.isFetching) ? (
+                    <LoadingSpinner />  
+                ) : (
+                    (this.props.isSuccess) ? ( 
+                            <Carousel showStatus={false} autoPlay>
+                                {(this.props.showcaseItems.length > 0) ? (
+                                        this.props.showcaseItems.map((currItem, i) => {
+                                            console.log("RENDERING");
+                                            return (
+                                                <div key={i}>
+                                                    <ParallaxImage imgURL={currItem.image} />
+                                                    <div className="legend">
+                                                        <h3>{currItem.title}</h3> 
+                                                        <p>{currItem.description}</p>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })
+                                    ) : (
+                                        <p>No carousel items. Something went wrong!</p>
+                                    )
+                                }         
+                            </Carousel>
+                        ) : (
+                            <p>Request failed!</p>
+                        )
+                )
         );
     }
     

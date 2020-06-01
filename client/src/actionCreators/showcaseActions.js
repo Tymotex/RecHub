@@ -3,12 +3,10 @@ import C from '../constants/actionTypes';
 import { BASE_URL } from '../constants/api';
 
 // TODO: Refactor
-export const addShowcase = (title, description, image) => ({
-    type: C.ADD_SHOWCASE,
+export const addShowcaseItems = (showcaseItems) => ({
+    type: C.ADD_SHOWCASE_ITEMS,
     payload: {
-        title: title,
-        description: description,
-        image: image
+        showcaseItems: showcaseItems
     }
 });
 
@@ -29,13 +27,19 @@ export const fetchShowcase = () => {
         dispatch(fetchingShowcase());        
         axios.get(`${BASE_URL}/games/showcase`)
             .then((response) => {
-                for (let i = 0; i < response.data.showcase.length; i++) {
-                    const { title, description, screenshots } = response.data.showcase[i];
-                    dispatch(addShowcase(title, description, screenshots[0]));
-                }
+                const showcaseItems = response.data.showcase.map((eachShowcase) => {
+                    return {
+                        title: eachShowcase.title,
+                        description: eachShowcase.description,
+                        image: eachShowcase.screenshots[0],
+                    };
+                });
+                console.log("Fetched showcase shit", showcaseItems);
+                dispatch(addShowcaseItems(showcaseItems));
                 dispatch(fetchedShowcase(true));
             })
             .catch((err) => {
+                console.log(err);
                 dispatch(fetchedShowcase(false))
             });
     };
